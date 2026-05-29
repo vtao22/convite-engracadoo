@@ -13,12 +13,10 @@ const handleYesClick = () => {
 
     // Ideias de encontros românticos (já traduzidas)
     const dateIdeas = [
-  
         "...",
         "...",
         "...",
         "...",
-
     ];
 
     // Cria e estiliza o novo botão "Let's Go!"
@@ -58,6 +56,9 @@ const handleYesClick = () => {
 };
 
 const handleNoMouseOver = () => {
+    // CORREÇÃO AQUI: Muda a posição para fixed para que o left e top funcionem e ele possa fugir
+    noBtn.style.position = "fixed";
+
     const { width, height } = noBtn.getBoundingClientRect();
     const maxX = window.innerWidth - width;
     const maxY = window.innerHeight - height;
