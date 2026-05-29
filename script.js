@@ -4,14 +4,13 @@ const gif = qs(".gif");
 const [yesBtn, noBtn] = [".yes-btn", ".no-btn"].map(qs);
 
 const handleYesClick = () => {
-    question.innerHTML = "VAAMOOOOO!!! Ainda bem que você não clicou no outro botão... Dito isso você ja pode me chamar de autista tb kkkkkkk";
+    question.innerHTML = "VAAMOOOOO!!! Ainda bem que você não clicou no outro botão hein 🤭🤪 ";
     gif.src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHR5dnhmMnVndzdpamw4dmc5amNpeWp0bXN4cTI4eTdvOXB6aWE4bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dMyMc3bF4FF9m/giphy.gif";
 
-    // Remove o evento do botão e o remove do DOM
-    noBtn.removeEventListener("mouseover", handleNoMouseOver);
+    // Remove o botão NÃO da tela definitivamente
     noBtn.remove();
 
-    // Ideias de encontros românticos (já traduzidas)
+    // Ideias de encontros românticos
     const dateIdeas = [
         "...",
         "...",
@@ -41,31 +40,45 @@ const handleYesClick = () => {
         const selectedDateIdea = dateIdeas[randomIndex];
 
         // 1. Mostra a ideia do date na tela
-        alert(`Vc aceitou sair comigoo!!! Algumas ideias para o nosso date irao surgir no seu whatsapp ${selectedDateIdea}`);
+        alert(`Vc aceitou sair comigoo!!! Algumas ideias para o nosso date irao surgir no seu whatsapp: ${selectedDateIdea}`);
 
         // 2. REDIRECIONA PARA O LINK APÓS O USUÁRIO CLICAR EM "OK" NO ALERTA
-        // Substitua o número de telefone pelo seu link do WhatsApp (com o código do país 55 + DDD + número)
+        // Substitua o número de telefone pelo seu link do WhatsApp
         window.location.href = "https://wa.link/lxdhvt";
-        
-        // Se preferir ir para um link de música do youtube, basta trocar para:
-        // window.location.href = "https://music.youtube.com/watch?v=izGwDsrQ1eQ";
     });
 
     // Substitui o botão "SIM" pelo botão "Let's Go!"
     yesBtn.replaceWith(letsGoBtn);
 };
 
-const handleNoMouseOver = () => {
-    // CORREÇÃO AQUI: Muda a posição para fixed para que o left e top funcionem e ele possa fugir
+// FUNÇÃO DE FUGA BLINDADA
+const fugir = (e) => {
+    // Evita qualquer comportamento de "clique real" no celular se a pessoa for super rápida
+    if (e && e.cancelable) {
+        e.preventDefault();
+    }
+
     noBtn.style.position = "fixed";
 
-    const { width, height } = noBtn.getBoundingClientRect();
-    const maxX = window.innerWidth - width;
-    const maxY = window.innerHeight - height;
+    // Usar offsetWidth/Height é muito mais estável do que getBoundingClientRect() durante animações CSS
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
 
-    noBtn.style.left = `${Math.floor(Math.random() * maxX)}px`;
-    noBtn.style.top = `${Math.floor(Math.random() * maxY)}px`;
+    const maxX = window.innerWidth - btnWidth;
+    const maxY = window.innerHeight - btnHeight;
+
+    // Math.abs garante que o botão nunca vá para uma coordenada negativa (fugir para fora da tela)
+    const randomX = Math.abs(Math.floor(Math.random() * maxX));
+    const randomY = Math.abs(Math.floor(Math.random() * maxY));
+
+    noBtn.style.left = `${randomX}px`;
+    noBtn.style.top = `${randomY}px`;
 };
 
+// Evento do botão SIM
 yesBtn.addEventListener("click", handleYesClick);
-noBtn.addEventListener("mouseover", handleNoMouseOver);
+
+// OS 3 GATILHOS PARA GARANTIR QUE O BOTÃO NÃO PARE DE FUGIR:
+noBtn.addEventListener("mouseenter", fugir); // O tradicional para o mouse do computador
+noBtn.addEventListener("pointerdown", fugir); // O sensor supremo para toques rápidos no celular
+noBtn.addEventListener("click", fugir); // Última barreira: se por milagre registrar um clique, ele foge de novo em vez de agir
