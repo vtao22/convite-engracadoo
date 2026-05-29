@@ -7,11 +7,10 @@ const handleYesClick = () => {
     question.innerHTML = "VAAMOOOOO!!! Ainda bem que você não clicou no outro botão hein 🤭🤪 ";
     gif.src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHR5dnhmMnVndzdpamw4dmc5amNpeWp0bXN4cTI4eTdvOXB6aWE4bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dMyMc3bF4FF9m/giphy.gif";
 
-    // Remove o evento do botão e o remove do DOM
-    noBtn.removeEventListener("mouseover", handleNoMouseOver);
+    // Remove o botão "NÃO" da tela definitivamente
     noBtn.remove();
 
-    // Ideias de encontros românticos (já traduzidas)
+    // Ideias de encontros românticos
     const dateIdeas = [
         "...",
         "...",
@@ -44,19 +43,19 @@ const handleYesClick = () => {
         alert(`Vc aceitou sair comigoo!!! Algumas ideias para o nosso date irao surgir no seu whatsapp ${selectedDateIdea}`);
 
         // 2. REDIRECIONA PARA O LINK APÓS O USUÁRIO CLICAR EM "OK" NO ALERTA
-        // Substitua o número de telefone pelo seu link do WhatsApp (com o código do país 55 + DDD + número)
+        // Substitua o número de telefone pelo seu link do WhatsApp
         window.location.href = "https://wa.link/lxdhvt";
-        
-        // Se preferir ir para um link de música do youtube, basta trocar para:
-        // window.location.href = "https://music.youtube.com/watch?v=izGwDsrQ1eQ";
     });
 
     // Substitui o botão "SIM" pelo botão "Let's Go!"
     yesBtn.replaceWith(letsGoBtn);
 };
 
-const handleNoMouseOver = () => {
-    // CORREÇÃO AQUI: Muda a posição para fixed para que o left e top funcionem e ele possa fugir
+// O 'e' dentro dos parênteses pega as informações do evento (mouse ou toque)
+const handleNoMouseOver = (e) => {
+    // Essa linha abaixo impede que o celular registre um "clique" acidental enquanto você tenta tocar
+    if (e) e.preventDefault();
+
     noBtn.style.position = "fixed";
 
     const { width, height } = noBtn.getBoundingClientRect();
@@ -68,4 +67,8 @@ const handleNoMouseOver = () => {
 };
 
 yesBtn.addEventListener("click", handleYesClick);
-noBtn.addEventListener("mouseover", handleNoMouseOver);
+
+// AS CORREÇÕES PARA CELULAR ESTÃO AQUI 👇
+noBtn.addEventListener("mouseover", handleNoMouseOver); // Funciona para computador
+noBtn.addEventListener("touchstart", handleNoMouseOver, { passive: false }); // Funciona para o primeiro toque no celular
+noBtn.addEventListener("click", handleNoMouseOver); // Garantia final caso a pessoa seja o The Flash e consiga clicar
