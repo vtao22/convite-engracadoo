@@ -4,7 +4,7 @@ const gif = qs(".gif");
 const [yesBtn, noBtn] = [".yes-btn", ".no-btn"].map(qs);
 
 const handleYesClick = () => {
-    question.innerHTML = "VAAMOOOOO!!! Ainda bem que você não clicou no outro botão hein 🤭🤪 ";
+    question.innerHTML = "VAAMOOOOO!!! Ainda bem que você não clicou no outro botão... Dito isso você ja pode me chamar de autista tb kkkkkkk ";
     gif.src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHR5dnhmMnVndzdpamw4dmc5amNpeWp0bXN4cTI4eTdvOXB6aWE4bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dMyMc3bF4FF9m/giphy.gif";
 
     // Remove o botão NÃO da tela definitivamente
