@@ -1,60 +1,250 @@
+/* Configurações gerais */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: rgb(215, 250, 20);
-    font-family: 'Leckerli One', cursive;
-    font-size: large;
-    background-color: rgb(227, 230, 57);
+  overflow-x: hidden; 
+  scroll-behavior: smooth;
 }
 
-h2 {
-    text-align: center;
-    font-size: 1.5em;
-    color: #000000;
-    margin: 15px 0;
+/* =========================================
+   ESTILOS DA PÁGINA FALSA DE LOGIN (SEÇÃO 1)
+   ========================================= */
+.fake-login {
+  height: 100vh;
+  background-color: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.login-box {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.login-desc {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.input-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.login-btn:hover {
+  background-color: #004494;
+}
+
+.scroll-hint {
+  margin-top: 25px;
+  font-size: 13px;
+  color: #888;
+  animation: bounce 2s infinite;
+}
+
+/* =========================================
+   ESTILOS DA PÁGINA DE AJUDA (SEÇÃO 2)
+   ========================================= */
+.fake-help {
+  height: 100vh;
+  background-color: #e9ecef; /* Um tom de cinza ligeiramente diferente para transição */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.help-box {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.help-title {
+  font-size: 22px;
+  color: #212529;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.help-subtitle {
+  font-size: 13px;
+  color: #6c757d;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.help-card {
+  background-color: #fff3cd; /* Cor amarela de aviso */
+  border-left: 5px solid #ffc107;
+  padding: 20px;
+  border-radius: 4px;
+  text-align: left;
+  margin-bottom: 25px;
+}
+
+.help-message {
+  font-size: 15px;
+  color: #664d03;
+  line-height: 1.6;
+}
+
+.loading-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid #ced4da;
+  border-top: 3px solid #0056b3;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-text {
+  font-size: 12px;
+  color: #6c757d;
+}
+
+.scroll-hint-2 {
+  font-size: 14px;
+  color: #495057;
+  font-weight: 500;
+  animation: bounce 2s infinite;
+}
+
+/* Animações */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+/* =========================================
+   ESTILOS DO CONVITE (SEÇÃO 3)
+   ========================================= */
+.invite-section {
+  height: 100vh;
+  background-color: #ffdde1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Leckerli One', cursive;
+  text-align: center;
+}
+
+.wrapper {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  max-width: 90%;
+}
+
+.question {
+  font-size: 32px;
+  color: #d63031;
+  margin-bottom: 20px;
 }
 
 .gif {
-    height: 100%;
-    width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 .btn-group {
-    width: 100%;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  height: 50px;
 }
 
-button {
-    position: absolute;
-    width: 150px;
-    height: inherit;
-    font-size: 1.2em;
-    color: white;
-    border-radius: 30px;
-    outline: none;
-    cursor: pointer;
-    box-shadow: 0 2px 4px gray;
-    border: 2px solid #ffffff;
+button.yes-btn, button.no-btn {
+  padding: 10px 30px;
+  font-size: 20px;
+  font-family: inherit;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-button:nth-child(1) {
-    margin-left: -200px;
-    background: #000000;
+.yes-btn {
+  background-color: #2ecc71;
+  color: white;
 }
 
-button:nth-child(2) {
-    margin-right: -200px;
-    background: rgb(0, 0, 0);
-    color: #f5f5f5;
+.yes-btn:hover {
+  background-color: #27ae60;
+}
+
+.no-btn {
+  background-color: #e74c3c;
+  color: white;
+  position: absolute;
 }
