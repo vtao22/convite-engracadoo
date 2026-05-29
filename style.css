@@ -250,3 +250,52 @@ body {
 .no-btn:hover {
   background-color: #ff6b81;
 }
+/* Estilização do botão final "Let's Go" */
+.letsgo-btn {
+    background: linear-gradient(135deg, #42e695 0%, #3bb2b8 100%); /* Degradê moderno */
+    color: white;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(66, 230, 149, 0.4); /* Sombra colorida */
+    z-index: 1000;
+    transition: all 0.3s ease;
+    
+    /* Animação para o botão não ficar parado */
+    animation: pulse 1.5s infinite;
+}
+
+.letsgo-btn:hover {
+    background: linear-gradient(135deg, #3bb2b8 0%, #42e695 100%);
+    transform: translate(-50%, -50%) scale(1.1) !important; /* Aumenta ao passar o mouse */
+    box-shadow: 0 15px 25px rgba(59, 178, 184, 0.5);
+}
+
+.letsgo-btn:active {
+    transform: translate(-50%, -50%) scale(0.95) !important; /* Efeito de clique */
+}
+
+/* Animação de pulso para chamar atenção */
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Ajuste para o texto da pergunta quando o SIM é clicado */
+.question {
+    font-family: 'Leckerli One', cursive; /* Fonte mais romântica/divertida */
+    color: #2d3436;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
