@@ -185,66 +185,68 @@ body {
 /* =========================================
    ESTILOS DO CONVITE (SEÇÃO 3)
    ========================================= */
+/* --- ESTILOS DA SEÇÃO SURPRESA --- */
+
+/* Centraliza o conteúdo geral da última página */
 .invite-section {
-  height: 100vh;
-  background-color: #ffdde1;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Leckerli One', cursive;
-  text-align: center;
+  min-height: 100vh; /* Faz a seção ocupar a tela toda */
+  background-color: #f9f9f9; /* Cor de fundo suave (ajuste se quiser) */
 }
 
+/* Centraliza o texto, o gif e os botões em uma coluna */
 .wrapper {
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px; /* Dá um respiro entre a pergunta, o gif e os botões */
+  max-width: 600px;
+  padding: 20px;
 }
 
-.question {
-  font-size: 32px;
-  color: #d63031;
-  margin-bottom: 20px;
-}
-
-.gif {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
+/* O SEGREDO PARA CENTRALIZAR OS BOTÕES */
 .btn-group {
-  position: relative;
   display: flex;
   justify-content: center;
-  gap: 20px;
-  height: 50px;
+  align-items: center;
+  gap: 30px; /* Cria um espaço perfeito entre o SIM e o NÃO */
+  margin-top: 20px;
 }
 
-button.yes-btn, button.no-btn {
-  padding: 10px 30px;
-  font-size: 20px;
-  font-family: inherit;
+/* --- DEIXANDO OS BOTÕES BONITOS --- */
+.yes-btn, .no-btn {
+  padding: 15px 40px;
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
   border: none;
-  border-radius: 5px;
+  border-radius: 50px; /* Bordas bem arredondadas e modernas */
   cursor: pointer;
-  font-weight: bold;
+  transition: all 0.3s ease; /* Animação suave ao passar o mouse */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra leve para dar profundidade */
 }
 
+/* Estilo do botão SIM */
 .yes-btn {
-  background-color: #2ecc71;
+  background-color: #4CAF50; /* Verde convidativo */
   color: white;
 }
 
 .yes-btn:hover {
-  background-color: #27ae60;
+  background-color: #45a049;
+  transform: scale(1.1); /* Dá uma leve crescida quando passa o mouse */
+  box-shadow: 0 6px 12px rgba(76, 175, 80, 0.3);
 }
 
+/* Estilo do botão NÃO */
 .no-btn {
-  background-color: #e74c3c;
+  background-color: #ff4757; /* Vermelho suave */
   color: white;
-  position: absolute;
+}
+
+.no-btn:hover {
+  background-color: #ff6b81;
 }
